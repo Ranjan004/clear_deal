@@ -1,0 +1,189 @@
+@import './belgrade.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'PPEditorialOld';
+  src: url('/fonts/PPEditorialOld-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPEditorialOld';
+  src: url('/fonts/PPEditorialOld-Ultralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPEditorialOld';
+  src: url('/fonts/PPEditorialOld-UltralightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans Custom';
+  src: url('/fonts/WorkSans.woff2') format('woff2');
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-editorialOld: 'PPEditorialOld', 'Georgia', serif;
+  --font-workSans: 'Work Sans Custom', 'Work Sans', system-ui, sans-serif;
+  --font-sans: 'Work Sans Custom', 'Work Sans', system-ui, sans-serif;
+  --font-serif: 'PPEditorialOld', 'Georgia', serif;
+
+  /* ClearDeal Property brand colors */
+  --color-forest: #1a2a4a;
+  --color-forest-dark: #111e36;
+  --color-forest-light: #243660;
+  --color-pine-green: #1a2a4a;
+  --color-vanilla: #f5f3ee;
+  --color-cream: #fdf6e3;
+  --color-cream-soft: #f0ead6;
+  --color-cream-dark: #c9a84c;
+  --color-sand: #e8dfc8;
+  --color-golden: #b8892a;
+  --color-accent: #d4a843;
+  --color-navy: #1a2a4a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-workSans);
+  background-color: #f5f3ee;
+  color: #1a2a4a;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #f5f3ee;
+}
+
+/* Lenis Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fdfbef;
+}
+::-webkit-scrollbar-thumb {
+  background: #b8892a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1a2a4a;
+}
+
+/* Luxury button styling matching Belgrade Arbor */
+.btn-gold {
+  background-color: #b8892a;
+  color: #ffffff;
+  font-family: var(--font-workSans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-gold:hover {
+  background-color: #1a2a4a;
+  color: #fdf6e3;
+  border-color: #b8892a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(26, 42, 74, 0.4);
+}
+
+.btn-outline-forest {
+  background: transparent;
+  color: #1a2a4a;
+  font-family: var(--font-workSans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(26, 42, 74, 0.3);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-outline-forest:hover {
+  background: #1a2a4a;
+  color: #fdf6e3;
+  border-color: #1a2a4a;
+  transform: translateY(-2px);
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: #fdf6e3;
+  font-family: var(--font-workSans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(253, 246, 227, 0.3);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-outline-light:hover {
+  background: #fdf6e3;
+  color: #1a2a4a;
+  border-color: #fdf6e3;
+  transform: translateY(-2px);
+}
