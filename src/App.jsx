@@ -19,6 +19,8 @@ import LocationPage from './pages/LocationPage';
 import AmenitiesPage from './pages/AmenitiesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
