@@ -1,108 +1,221 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MapPin, Compass, ShieldCheck, Eye, Layers } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HorizontalAerialSection({ lang }) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
-  const revealLeftRef = useRef(null);
-  const revealRightRef = useRef(null);
-  const horizontalImageRef = useRef(null);
-  const markersRef = useRef(null);
-  const cloud1Ref = useRef(null);
-  const cloud2Ref = useRef(null);
-  const cloud3Ref = useRef(null);
+  const imageContainerRef = useRef(null);
+  const [activeLayer, setActiveLayer] = useState('aerial'); // 'aerial' | 'cad' | 'masterplan'
+
+  const layers = {
+    aerial: {
+      src: '/media/township_aerial_panorama.jpg',
+      alt: 'Golden Luxury Homes Aerial Drone Panorama',
+      label: 'Township Aerial View',
+      caption: 'Direct Highway Frontage & 155 Demarcated Plots',
+    },
+    cad: {
+      src: '/media/golden_luxury_layout.png',
+      alt: '155 Plots Approved CAD Layout',
+      label: '155-Plot CAD Layout',
+      caption: 'Detailed Sector Map (58 to 195 Sq. Yd. Plots & 25ft Roads)',
+    },
+    masterplan: {
+      src: '/media/ghaziabad_master_plan_2031.png',
+      alt: 'Ghaziabad Master Plan 2031 Connectivity',
+      label: 'Ghaziabad 2031 Plan',
+      caption: 'Regional Connectivity & Expressway Corridor',
+    },
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: 'top top',
-          end: '+=250%',
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-        },
-      });
-
-      // 1. Reveal curtain doors slide open
-      tl.to(revealLeftRef.current, { xPercent: -100, ease: 'power1.inOut' }, 0)
-        .to(revealRightRef.current, { xPercent: 100, ease: 'power1.inOut' }, 0);
-
-      // 2. Horizontal panorama slides sideways
-      tl.to(horizontalImageRef.current, { x: '-35%', ease: 'none' }, 0.2)
-        .to(markersRef.current, { x: '-35%', ease: 'none' }, 0.2);
-
-      // 3. Clouds parallax drift
-      tl.to(cloud1Ref.current, { x: '-20%', ease: 'none' }, 0.1)
-        .to(cloud2Ref.current, { x: '-40%', ease: 'none' }, 0.1)
-        .to(cloud3Ref.current, { x: '-15%', ease: 'none' }, 0.1);
-
+      // Smooth subtle zoom and pan on scroll
+      gsap.fromTo(
+        imageContainerRef.current,
+        { scale: 1.08, y: 30 },
+        {
+          scale: 1,
+          y: -20,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.2,
+          },
+        }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="Horizontal" ref={sectionRef} className="relative z-1 overflow-clip">
-      <div ref={triggerRef} className="trigger relative flex h-screen w-full items-center overflow-hidden">
+    <section id="Horizontal" ref={sectionRef} className="relative z-1 overflow-clip bg-[#0d1424] text-white py-20 lg:py-28 border-t border-[#b8892a]/20">
+      
+      {/* Background radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#b8892a]/10 rounded-full blur-[160px] pointer-events-none" />
+
+      <div ref={triggerRef} className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
-        {/* Curtains sliding apart */}
-        <div ref={revealLeftRef} className="bg-[#f5f3ee] reveal absolute top-0 left-0 z-10 h-full w-1/2"></div>
-        <div ref={revealRightRef} className="bg-[#f5f3ee] reveal absolute top-0 right-0 z-10 h-full w-1/2"></div>
-
-        {/* Gigantic high-res aerial drone photograph */}
-        <img
-          ref={horizontalImageRef}
-          src="/home/horizontal/horizontal.webp"
-          alt="Horizontal Aerial Panorama"
-          className="horizontal-image h-full w-auto max-w-none object-cover will-change-transform"
-          loading="lazy"
-          decoding="async"
-        />
-
-        {/* Aerial markers A, B and floating volumetric cloud overlays */}
-        <div ref={markersRef} className="horizontal-markers pointer-events-none absolute top-0 left-0 z-20 h-full w-full will-change-transform">
-          <div className="absolute left-1/2 h-full w-[42%] -translate-x-1/2 -translate-y-10">
-            <span className="heading-1 text-sand absolute top-1/2 left-0 -translate-y-1/2 uppercase drop-shadow-lg font-serif text-5xl sm:text-7xl">
-              A
-            </span>
-            <span className="heading-1 text-sand absolute top-1/2 right-0 -translate-y-1/2 uppercase drop-shadow-lg font-serif text-5xl sm:text-7xl">
-              B
+        {/* Section Header: Centered & High Contrast */}
+        <div className="flex flex-col items-center text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#b8892a]/20 border border-[#b8892a]/40 mb-4 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-[#b8892a] animate-pulse" />
+            <span className="text-[11px] font-mono text-[#e8dfc8] uppercase tracking-widest font-semibold">
+              BIRD'S-EYE PERSPECTIVE • GOLDEN LUXURY HOMES
             </span>
           </div>
+          
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-normal uppercase tracking-tight">
+            Aerial & Master Layout Perspective
+          </h2>
+          
+          <p className="mt-3 text-white/75 font-sans text-sm sm:text-base max-w-2xl font-light">
+            Explore Golden Luxury Homes from above — strategically positioned directly on the Muradnagar Dasna Highway with 155 demarcated plots, paved roads, and lush natural surroundings.
+          </p>
 
-          <img
-            ref={cloud1Ref}
-            alt="Cloud 1"
-            src="/home/horizontal/1.webp"
-            className="cloud1 absolute bottom-0 left-0 h-auto w-395 max-w-none -translate-x-1/2 translate-y-1/2 object-cover max-xl:left-1/10 max-xl:w-350 max-lg:left-1/5 max-lg:w-220 max-md:w-180"
-          />
-          <img
-            ref={cloud2Ref}
-            alt="Cloud 2"
-            src="/home/horizontal/2.webp"
-            className="cloud2 absolute bottom-0 left-1/2 h-auto w-550 max-w-none -translate-x-1/2 translate-y-1/2 object-cover max-xl:w-450 max-lg:w-280 max-md:bottom-1/4 max-md:w-220"
-          />
-          <img
-            ref={cloud3Ref}
-            alt="Cloud 3"
-            src="/home/horizontal/3.webp"
-            className="cloud3 absolute top-0 right-0 h-auto w-465 max-w-none translate-x-1/2 -translate-y-1/2 object-cover max-xl:w-400 max-lg:w-250 max-md:w-200"
-          />
+          {/* Layer Selector Switcher Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6 p-1.5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+            {Object.entries(layers).map(([key, data]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setActiveLayer(key)}
+                className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-sans font-medium transition-all flex items-center gap-2 cursor-pointer ${
+                  activeLayer === key
+                    ? 'bg-[#b8892a] text-[#0d1424] font-bold shadow-lg shadow-[#b8892a]/30 scale-102'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {key === 'aerial' && <Eye className="w-4 h-4" />}
+                {key === 'cad' && <Compass className="w-4 h-4" />}
+                {key === 'masterplan' && <Layers className="w-4 h-4" />}
+                <span>{data.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Pinned Title Overlaid across the aerial sky */}
-        <div className="absolute inset-0 h-screen w-full pointer-events-none z-30">
-          <h2 className="heading text-sand hero absolute top-40 left-1/2 w-full -translate-x-1/2 text-center uppercase max-xl:top-30 max-xl:text-[7.5rem] max-lg:text-[4.25rem] max-md:top-16 max-md:text-[3.25rem] drop-shadow-2xl">
-            {"Aerial Perspective"}
-          </h2>
+        {/* Panoramic Viewer Window */}
+        <div className="relative rounded-3xl overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.8)] border-2 border-[#b8892a]/40 bg-[#111e36]">
+          
+          {/* Main Panorama Image */}
+          <div ref={imageContainerRef} className="relative aspect-[16/9] w-full overflow-hidden bg-black flex items-center justify-center">
+            <img
+              src={layers[activeLayer].src}
+              alt={layers[activeLayer].alt}
+              className="w-full h-full object-cover transition-all duration-500 will-change-transform"
+              loading="lazy"
+            />
+
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1424]/90 via-transparent to-black/30 pointer-events-none" />
+
+            {/* In-view Hotspot Badges (only on Aerial view) */}
+            {activeLayer === 'aerial' && (
+              <>
+                {/* Highway Frontage Marker */}
+                <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 z-20 pointer-events-auto">
+                  <div className="px-4 py-2.5 rounded-2xl bg-[#0d1424]/90 border border-[#b8892a] shadow-2xl backdrop-blur-md flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#b8892a]/20 flex items-center justify-center text-[#b8892a]">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[9px] uppercase font-bold text-[#b8892a] block tracking-widest font-mono">
+                        HIGHWAY FRONTAGE
+                      </span>
+                      <span className="font-serif text-sm sm:text-base text-white font-normal">
+                        Muradnagar Dasna Main Road
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 155 Plots Marker */}
+                <div className="absolute top-6 left-6 sm:top-10 sm:left-10 z-20 pointer-events-auto">
+                  <div className="px-4 py-2.5 rounded-2xl bg-[#0d1424]/90 border border-[#b8892a] shadow-2xl backdrop-blur-md flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#b8892a]/20 flex items-center justify-center text-[#b8892a]">
+                      <Compass className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[9px] uppercase font-bold text-[#b8892a] block tracking-widest font-mono">
+                        SECTOR 1 • PLANNED TOWNSHIP
+                      </span>
+                      <span className="font-serif text-sm sm:text-base text-white font-normal">
+                        155 Demarcated Plots (58 - 195 Sq. Yd.)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Grand Entrance Arch Marker */}
+                <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-20 pointer-events-auto hidden sm:block">
+                  <div className="px-4 py-2.5 rounded-2xl bg-[#0d1424]/90 border border-[#b8892a] shadow-2xl backdrop-blur-md flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#b8892a]/20 flex items-center justify-center text-[#b8892a]">
+                      <ShieldCheck className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[9px] uppercase font-bold text-[#b8892a] block tracking-widest font-mono">
+                        GATED SECURITY
+                      </span>
+                      <span className="font-serif text-sm sm:text-base text-white font-normal">
+                        24/7 Guarded Boom Barrier
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+          </div>
+
+          {/* Bottom Information Footer Bar */}
+          <div className="p-4 sm:p-5 bg-[#0d1424] border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <span className="w-3 h-3 rounded-full bg-[#b8892a]" />
+              <p className="font-serif text-base sm:text-lg text-[#e8dfc8]">
+                {layers[activeLayer].caption}
+              </p>
+            </div>
+            
+            <a
+              href="#MasterPlan"
+              className="px-5 py-2 rounded-full bg-[#b8892a]/20 hover:bg-[#b8892a] text-[#b8892a] hover:text-[#0d1424] border border-[#b8892a]/40 text-xs font-mono uppercase tracking-wider font-bold transition-all"
+            >
+              Inspect High-Res CAD &rarr;
+            </a>
+          </div>
+
+        </div>
+
+        {/* 3 Metric Summary Counters */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+          <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <span className="text-2xl sm:text-3xl font-serif text-[#b8892a] block">155</span>
+            <span className="text-[11px] font-mono text-white/70 uppercase">Approved Plots</span>
+          </div>
+          <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <span className="text-2xl sm:text-3xl font-serif text-[#b8892a] block">20,972</span>
+            <span className="text-[11px] font-mono text-white/70 uppercase">Total Sq. Yards</span>
+          </div>
+          <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <span className="text-2xl sm:text-3xl font-serif text-[#b8892a] block">25 Ft</span>
+            <span className="text-[11px] font-mono text-white/70 uppercase">Main Sector Roads</span>
+          </div>
+          <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <span className="text-2xl sm:text-3xl font-serif text-[#b8892a] block">Freehold</span>
+            <span className="text-[11px] font-mono text-white/70 uppercase">Immediate Registry</span>
+          </div>
         </div>
 
       </div>
+
     </section>
   );
 }

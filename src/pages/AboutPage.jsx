@@ -1,49 +1,31 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, CheckCircle2, MapPin, Compass, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const projects = [
+const highlights = [
   {
-    name: 'ClearDeal Property',
-    location: 'BELGRADE',
-    image: '/about-the-investor/slide1.webp',
-    en: 'ClearDeal Property is one of our largest projects and embodies the vision that guides us — that every square metre should serve a purpose and contribute to the functionality, quality and value of the space. Through a consistent approach to design, careful selection of partners and dedication to every detail, we are creating a modern mixed-use complex that meets the contemporary needs of living and working.',
-    sr: 'ClearDeal Property jedan je od naših najvećih projekata i predstavlja viziju kojom se vodimo — da svaki kvadratni metar treba da ima svoju svrhu i doprinese funkcionalnosti, kvalitetu i vrednosti prostora.',
+    name: 'Recent Plotted Project: Golden Luxury Homes',
+    location: 'MURADNAGAR DASNA ROAD, GHAZIABAD',
+    image: '/media/golden_luxury_gate.jpg',
+    desc: 'Our recent 155-plot residential and commercial plotted township development on Muradnagar Dasna Main Road, Ghaziabad. We specialize in precision CAD layout plotting, 25ft, 22ft & 20ft wide interlocking roads, street electrification, and immediate legal mutation.',
   },
   {
-    name: 'AD Residence',
-    location: 'BELGRADE',
-    image: '/about-the-investor/slide6.webp',
-    en: 'AD Residence is a modern mixed-use complex located in a quiet part of Zemun, designed to combine quality construction, functional design and the comfort of everyday life. The project comprises two wings with a diverse offering of residential units and commercial spaces, along with a spacious three-level underground garage.',
-    sr: 'AD Residence je savremeni stambeno-poslovni kompleks u mirnom delu Zemuna, osmišljen za udobnost svakodnevnog života.',
+    name: 'CAD Master Layout Planning',
+    location: 'DELHI NCR',
+    image: '/media/golden_luxury_layout.png',
+    desc: 'Precision CAD layout design with optimized road networks (28.4% road area, 71.6% plotted area), designated open green pockets, and standard rectangular plots ranging from 58 to 195 sq. yards.',
   },
   {
-    name: 'Harmony Homes',
-    location: 'KRAGUJEVAC',
-    image: '/about-the-investor/slide2.webp',
-    en: 'Harmony Homes is a modern residential complex in Kragujevac, situated between Gavrila Principa and Daničićeva streets. The project comprises two buildings with a total of 86 apartments, commercial space and carefully landscaped green areas designed for pleasant family living.',
-    sr: 'Harmony Homes je moderan stambeni kompleks u Kragujevcu sa ukupno 86 stanova i pažljivo uređenim zelenim površinama.',
+    name: 'On-Ground Road & Utility Infrastructure',
+    location: 'KALLU GARHI',
+    image: '/media/videos/thumb_1.jpg',
+    desc: 'Heavy-duty interlocking concrete paver roads, pre-cast boundary demarcation stones, pre-installed utility poles, and underground drainage network.',
   },
   {
-    name: 'Stari Mlin',
-    location: 'KRAGUJEVAC',
-    image: '/about-the-investor/slide4.webp',
-    en: 'The Stari Mlin project is a modern mixed-use complex built on the site of the former city mill, preserving the spirit of this historic location through a blend of tradition and contemporary architecture. Completion is planned for late 2027.',
-    sr: 'Projekat Stari Mlin je savremeni stambeno-poslovni kompleks izgrađen na mestu nekadašnjeg gradskog mlina.',
-  },
-  {
-    name: 'Old City Residence',
-    location: 'KRAGUJEVAC',
-    image: '/about-the-investor/slide3.webp',
-    en: 'Old City Residence is a significant project planned for an attractive location in Kragujevac. Construction begins late 2026. The complex will comprise 169 residential units, several commercial spaces and 222 garage spaces across two underground levels.',
-    sr: 'Old City Residence je značajan projekat u Kragujevcu sa 169 stambenih jedinica i 222 garažna mesta.',
-  },
-  {
-    name: 'Red Cross Centre',
-    location: 'KRAGUJEVAC',
-    image: '/about-the-investor/slide5.webp',
-    en: 'The new Red Cross Centre in Kragujevac, developed in cooperation with the City Red Cross Organisation, is a modern and functional solution replacing the existing inadequate facilities. The 1,198 sq m building includes modern offices, a public kitchen and humanitarian programme rooms.',
-    sr: 'Novi Centar Crvenog krsta u Kragujevcu razvijen je u saradnji sa Gradskom organizacijom Crvenog krsta.',
+    name: 'Ghaziabad Master Plan 2031 Connectivity',
+    location: 'STRATEGIC TRANSIT CORRIDOR',
+    image: '/media/ghaziabad_master_plan_2031.png',
+    desc: 'Direct accessibility to Eastern Peripheral Expressway (1 min), Delhi-Meerut Expressway (3 min), and Namo Bharat Duhai RRTS Rapid Rail Station (8 min).',
   },
 ];
 
@@ -51,9 +33,9 @@ export default function AboutPage({ lang, onOpenInquiry }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const navigate = useNavigate();
 
-  const prev = () => setActiveSlide((s) => (s === 0 ? projects.length - 1 : s - 1));
-  const next = () => setActiveSlide((s) => (s === projects.length - 1 ? 0 : s + 1));
-  const current = projects[activeSlide];
+  const prev = () => setActiveSlide((s) => (s === 0 ? highlights.length - 1 : s - 1));
+  const next = () => setActiveSlide((s) => (s === highlights.length - 1 ? 0 : s + 1));
+  const current = highlights[activeSlide];
 
   return (
     <div className="overflow-x-clip">
@@ -61,130 +43,133 @@ export default function AboutPage({ lang, onOpenInquiry }) {
       {/* Hero */}
       <section className="relative min-h-[70vh] flex items-end pb-20 overflow-clip">
         <img
-          src="/about-the-investor/about-hero.webp"
-          alt="About the Investor"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          src="/media/golden_luxury_gate.jpg"
+          alt="About ClearDeal Property"
+          className="absolute inset-0 h-full w-full object-cover object-center filter brightness-60"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111e36]/90 via-[#111e36]/40 to-[#111e36]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1424] via-[#0d1424]/50 to-black/30" />
         <div className="wrapper relative z-10 pt-8">
-          <p className="font-sans uppercase tracking-[0.3em] text-[#ccbf99] text-xs mb-4">
-            Perose Property Group
+          <p className="font-sans uppercase tracking-[0.3em] text-[#b8892a] text-xs mb-4 font-bold">
+            Township Layout & Land Development
           </p>
           <h1 className="font-serif uppercase text-[#fdfbef] leading-none text-[5.5rem] max-2xl:text-[4.5rem] max-xl:text-[3.5rem] max-lg:text-[2.8rem] max-md:text-[2rem]">
-            {"About the Investor"}
+            About ClearDeal Property
           </h1>
+          <p className="text-white/80 font-sans text-sm max-w-xl mt-4">
+            Burhanuddin House No 1-68, Kh. No. 797, Block-I, Ground Floor, Jaitpur Extension Part-2, Badarpur, Delhi - 110044
+          </p>
         </div>
       </section>
 
       {/* Intro */}
-      <section className="bg-[#fdfbef] py-24 max-lg:py-16">
+      <section className="bg-[#f5f3ee] py-24 max-lg:py-16">
         <div className="wrapper">
           <div className="grid grid-cols-2 gap-16 max-lg:grid-cols-1 max-lg:gap-10">
             <div>
-              <h2 className="font-serif text-[2rem] max-lg:text-[1.6rem] text-[#2f3a26] leading-snug">
-                {'Each of our projects is distinguished by contemporary architecture, high construction standards and carefully selected locations.'}
+              <span className="text-xs uppercase tracking-widest text-[#b8892a] font-bold block mb-3">
+                OUR CORE EXPERTISE
+              </span>
+              <h2 className="font-serif text-[2.2rem] max-lg:text-[1.8rem] text-[#111e36] leading-snug font-normal">
+                We design master-planned township layouts and sell demarcated freehold plots with 100% legal clarity.
               </h2>
             </div>
             <div>
-              <p className="font-sans text-[#2f3a26]/80 leading-relaxed text-[1rem] mb-6">
-                {'Perose Property Group is a holding company specialising in the development, investment and management of residential and commercial projects across Serbia. Our portfolio includes projects such as AD Residence in Zemun, Harmony Homes, Stari Mlin and Old City Residence in Kragujevac.'}
+              <p className="font-sans text-[#1a2a4a]/85 leading-relaxed text-[1.05rem] mb-6">
+                ClearDeal Property is a dedicated land development and township planning enterprise. Rather than selling pre-constructed apartments, we focus exclusively on land mapping, township road infrastructure, demarcation, and providing individual freehold plots where owners can design their bespoke dream homes.
               </p>
-              <p className="font-sans text-[#2f3a26]/70 leading-relaxed text-[0.95rem]">
-                {'Our mission is to create lasting value through innovative and sustainable development that enhances urban environments and improves quality of life.'}
+              <p className="font-sans text-[#1a2a4a]/75 leading-relaxed text-[0.95rem]">
+                Every square yard in our projects is backed by verified revenue records, government master plan compliance, immediate registry, and on-ground utility development including 25ft & 20ft paver roads, electric lines, and drainage.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Slider */}
-      <section className="bg-[#1f261e] py-24 max-lg:py-16">
+      {/* Highlights Slider */}
+      <section className="bg-[#0d1424] py-24 max-lg:py-16 text-white">
         <div className="wrapper">
-          <p className="font-sans uppercase tracking-[0.25em] text-[#ccbf99]/60 text-xs mb-12">
-            {"Our Projects"}
+          <p className="font-sans uppercase tracking-[0.25em] text-[#b8892a] text-xs mb-12 font-bold">
+            Project Highlights & Infrastructure
           </p>
 
-          <div className="grid grid-cols-2 gap-12 max-lg:grid-cols-1">
+          <div className="grid grid-cols-2 gap-12 max-lg:grid-cols-1 items-center">
             {/* Image */}
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[#b8892a]/30 shadow-2xl">
               <img
                 key={activeSlide}
                 src={current.image}
                 alt={current.name}
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-700"
               />
-              <div className="absolute top-4 left-4 px-3 py-1 bg-[#ccbf99]/20 backdrop-blur-sm rounded-full border border-[#ccbf99]/30">
-                <span className="font-sans text-[#ccbf99] text-xs uppercase tracking-wider">{current.location}</span>
+              <div className="absolute top-4 left-4 px-3 py-1 bg-[#111e36]/80 backdrop-blur-sm rounded-full border border-white/20">
+                <span className="font-sans text-[#b8892a] text-xs uppercase tracking-wider font-semibold">
+                  {current.location}
+                </span>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="flex flex-col justify-between py-4">
+            {/* Description */}
+            <div className="flex flex-col justify-between">
               <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="font-sans text-[#ccbf99]/50 text-sm">{String(activeSlide + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
-                </div>
-                <h3 className="font-serif text-[#fdfbef] text-[3rem] max-lg:text-[2.2rem] uppercase leading-none mb-6">
+                <h3 className="font-serif text-3xl sm:text-4xl text-[#e8dfc8] mb-4 font-light">
                   {current.name}
                 </h3>
-                <p className="font-sans text-[#fdfbef]/70 leading-relaxed text-[0.98rem]">
-                  {lang === 'sr' ? current.sr : current.en}
+                <p className="font-sans text-white/80 leading-relaxed text-sm sm:text-base mb-8">
+                  {current.desc}
                 </p>
               </div>
 
-              {/* Nav Arrows */}
-              <div className="flex items-center gap-4 mt-10">
-                <button
-                  onClick={prev}
-                  className="w-12 h-12 rounded-full border border-[#ccbf99]/30 flex items-center justify-center text-[#ccbf99] hover:bg-[#ccbf99]/10 transition-colors cursor-pointer"
-                  aria-label="Previous project"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={next}
-                  className="w-12 h-12 rounded-full border border-[#ccbf99]/30 flex items-center justify-center text-[#ccbf99] hover:bg-[#ccbf99]/10 transition-colors cursor-pointer"
-                  aria-label="Next project"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
+              {/* Slider Controls */}
+              <div className="flex items-center justify-between border-t border-white/15 pt-6">
+                <span className="font-mono text-sm text-[#b8892a] font-semibold">
+                  0{activeSlide + 1} / 0{highlights.length}
+                </span>
 
-                {/* Dot indicators */}
-                <div className="flex gap-2 ml-2">
-                  {projects.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveSlide(i)}
-                      className={`w-1.5 h-1.5 rounded-full transition-all cursor-pointer ${i === activeSlide ? 'bg-[#ccbf99] w-5' : 'bg-[#ccbf99]/30'}`}
-                      aria-label={`Go to project ${i + 1}`}
-                    />
-                  ))}
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={prev}
+                    className="w-11 h-11 rounded-full border border-white/20 hover:border-[#b8892a] hover:bg-[#b8892a] hover:text-[#0d1424] text-white flex items-center justify-center transition-all cursor-pointer"
+                    aria-label="Previous project"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={next}
+                    className="w-11 h-11 rounded-full border border-white/20 hover:border-[#b8892a] hover:bg-[#b8892a] hover:text-[#0d1424] text-white flex items-center justify-center transition-all cursor-pointer"
+                    aria-label="Next project"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Values / Closing Statement */}
-      <section className="bg-[#fdfbef] py-24 max-lg:py-16">
-        <div className="wrapper text-center max-w-3xl mx-auto">
-          <h2 className="font-serif text-[2.2rem] max-lg:text-[1.7rem] text-[#2f3a26] leading-snug mb-8">
-            {'We believe that quality projects are born through dedication to excellence, a responsible approach and long-term thinking.'}
+      {/* Office & Site CTA */}
+      <section className="bg-[#111e36] py-20 text-center text-white border-t border-[#b8892a]/30">
+        <div className="wrapper max-w-3xl mx-auto space-y-6">
+          <span className="text-xs uppercase tracking-widest text-[#b8892a] font-bold block">
+            VISIT OUR OFFICE OR PROJECT SITE
+          </span>
+          <h2 className="font-serif text-3xl sm:text-5xl text-[#e8dfc8]">
+            Plan Your Land Investment With Us
           </h2>
-          <p className="font-sans text-[#2f3a26]/70 leading-relaxed text-[1rem] mb-12">
-            {'Through every project we build, our goal is to create spaces that bring long-term value and contribute to a better everyday life for those who use them.'}
+          <p className="text-sm sm:text-base text-white/80 font-sans">
+            Registered Corporate Office: Burhanuddin House No 1-68, Kh. No. 797, Block-I, Ground Floor, Jaitpur Extension Part-2, Badarpur, Delhi - 110044.
+            <br />
+            Project Site: Muradnagar Dasna Main Road, Kallu Garhi, Ghaziabad (NCR), UP.
           </p>
-          <button
-            onClick={onOpenInquiry}
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#2f3a26] text-[#ccbf99] font-sans uppercase text-sm tracking-wider hover:bg-[#1f261e] transition-colors cursor-pointer"
-          >
-            {"Contact us"}
-            <svg width="20" height="8" viewBox="0 0 25 10" fill="none" className="h-2 w-4">
-              <path d="M0.5 5L24.5 5" stroke="currentColor" strokeLinecap="round" />
-              <path d="M19.5 0.5L24.5 5L19.5 9.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="bevel" />
-            </svg>
-          </button>
+          <div className="flex items-center justify-center gap-4 pt-4">
+            <button
+              onClick={onOpenInquiry}
+              className="px-8 py-3.5 rounded-full bg-[#b8892a] text-[#111e36] font-bold text-xs uppercase tracking-wider hover:bg-white transition-all cursor-pointer shadow-xl font-sans"
+            >
+              Book Site Demarcation Visit
+            </button>
+          </div>
         </div>
       </section>
 

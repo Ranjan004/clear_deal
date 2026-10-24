@@ -4,6 +4,9 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import HeroSection from '../components/HeroSection';
+import EntranceArchSection from '../components/EntranceArchSection';
+import MasterLayoutSection from '../components/MasterLayoutSection';
+import SiteVideoShowcase from '../components/SiteVideoShowcase';
 import IntroductionSection from '../components/IntroductionSection';
 import LocationSection from '../components/LocationSection';
 import AroundSection from '../components/AroundSection';
@@ -20,8 +23,10 @@ import InstallmentPlanSection from '../components/InstallmentPlanSection';
 export default function HomePage({ lang, t, onOpenInquiry }) {
   return (
     <div className="overflow-x-clip">
-      <HeroSection lang={lang} t={t} />
-      <IntroductionSection lang={lang} t={t} />
+      <HeroSection lang={lang} t={t} onOpenInquiry={onOpenInquiry} />
+      <EntranceArchSection onOpenInquiry={onOpenInquiry} />
+      <MasterLayoutSection onOpenInquiry={onOpenInquiry} />
+      <SiteVideoShowcase onOpenInquiry={onOpenInquiry} />
       <LocationSection lang={lang} t={t} />
       <AroundSection lang={lang} t={t} />
       <ResidencesHeroSection lang={lang} t={t} />

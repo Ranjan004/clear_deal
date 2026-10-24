@@ -2,78 +2,80 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 // Exact coordinates from original ClearDeal Property reference (1344 x 756 aspect ratio)
+// Adjusted map coordinates for Golden Luxury Homes & surrounding Ghaziabad NCR landmarks
 const PIN_PERCENTAGES = [
-  { left: '12.3%', top: '55.2%' }, // 0: Železnička stanica
-  { left: '57.6%', top: '36.8%' }, // 1: Savremena osnovna škola
-  { left: '62.6%', top: '42.7%' }, // 2: West 65
-  { left: '61.6%', top: '54.9%' }, // 3: Airport City
-  { left: '40.6%', top: '56.7%' }, // 4: Hangar Food Market
-  { left: '11.0%', top: '34.7%' }  // 5: Aerodrom Nikola Tesla
+  { left: '44.0%', top: '52.0%' }, // 0: DPSG International School
+  { left: '68.0%', top: '34.0%' }, // 1: Eastern Peripheral Expressway
+  { left: '76.0%', top: '46.0%' }, // 2: Delhi-Meerut Expressway (NH-09)
+  { left: '78.0%', top: '68.0%' }, // 3: Duhai RRTS Metro Station
+  { left: '56.0%', top: '70.0%' }, // 4: Dasna & Muradnagar Commercial Hubs
+  { left: '38.0%', top: '28.0%' }  // 5: Badarpur Corporate Hub (Delhi)
 ];
 
-const ARBOR_PIN_POS = { left: '37.0%', top: '38.7%' };
+const ARBOR_PIN_POS = { left: '50.0%', top: '45.0%' };
 
 // Landmark Destination Data
+// Landmark Destination Data for Golden Luxury Homes, Ghaziabad NCR
 const DESTINATIONS = [
   {
-    id: 'tosin',
-    nameSr: 'Železnička stanica',
-    nameEn: 'Train Station',
-    car: '1 min',
-    walk: '3 min',
-    image: '/home/around/tosin.webp',
-    descSr: 'Železnička stanica Tošin bunar nalazi se na teritoriji opštine Novi Beograd i deo je sistema BG Voz. Povezuje Zemun sa jedne strane, odnosno Novi Beograd i centar grada sa druge. Stanica raspolaže sa dva koloseka i dva perona.',
-    descEn: 'Tošin Bunar train station is located in New Belgrade and is part of the BG Voz network. It connects Zemun on one side with New Belgrade and the city centre on the other, featuring two tracks and platforms.'
-  },
-  {
-    id: 'savremena',
-    nameSr: 'Savremena osnovna škola',
-    nameEn: 'Savremena Primary School',
+    id: 'dpsg',
+    nameSr: 'DPSG International Public School',
+    nameEn: 'DPSG International School',
     car: '1 min',
     walk: '2 min',
-    image: '/home/around/savremena.webp',
-    descSr: 'Savremena osnovna škola je deo jedinstvenog obrazovnog sistema sa više od dve decenije iskustva. Nastala je na temeljima Savremena International School, prepoznate po visokim obrazovnim standardima i rezultatima koji je svrstavaju među vodeće obrazovne ustanove u regionu.',
-    descEn: 'Savremena Primary School is part of a premier educational group with over two decades of excellence, recognised for world-class pedagogical standards and student achievements.'
+    image: '/media/golden_luxury_layout.png',
+    descSr: 'DPSG International Public School nalazi se neposredno uz kompleks u Kallugariju, pružajući vrhunsko obrazovanje deci na samo nekoliko koraka od kuće.',
+    descEn: 'DPSG International Public School is located directly adjacent to Golden Luxury Homes in Kallugari, offering premier CBSE education walking distance from your villa.'
   },
   {
-    id: 'west',
-    nameSr: 'West 65',
-    nameEn: 'West 65',
+    id: 'epe',
+    nameSr: 'Eastern Peripheral Expressway',
+    nameEn: 'Eastern Peripheral Expressway',
     car: '1 min',
     walk: '3 min',
-    image: '/home/around/west.webp',
-    descSr: 'West 65 je savremen stambeno-poslovni kompleks smešten u Bloku 65 na Novom Beogradu. Poznat je po luksuznim stambenim jedinicama, tržnom centru i impozantnoj kuli, visokoj 155 metara. Kompleks obuhvata brojne sadržaje, uključujući restorane, prodavnice, uređene pešačke zone i prostore za rekreaciju.',
-    descEn: 'West 65 is a contemporary residential-commercial complex in Block 65, featuring luxury residences, an upscale mall, and the landmark 155m tower surrounded by parks, boutiques and restaurants.'
+    image: '/media/videos/thumb_1.jpg',
+    descSr: 'Direktan pristup Eastern Peripheral Expressway (EPE) obezbeđuje besprekornu tranzitnu vezu sa Sonipatom, Faridabadom, Palwalom i Greater Noidom bez ulaska u gradske gužve.',
+    descEn: 'Direct access to Eastern Peripheral Expressway (EPE) ensures seamless signal-free bypass to Greater Noida, Faridabad, Kundli and Palwal.'
   },
   {
-    id: 'airportcity',
-    nameSr: 'Airport City',
-    nameEn: 'Airport City',
-    car: '2 min',
-    walk: '4 min',
-    image: '/home/around/airportcity.webp',
-    descSr: 'Airport City Belgrade predstavlja najveći poslovno-komercijalni kompleks u Beogradu. Sastoji se od modernih poslovnih zgrada u kojima posluju brojne međunarodne kompanije, uz bogatu ponudu restorana, kafića, prodavnica i drugih sadržaja. Danas važi za jedno od najznačajnijih poslovnih središta u Srbiji.',
-    descEn: 'Airport City Belgrade is the capital’s premier commercial city-within-a-city, hosting leading global enterprises alongside fine dining, specialty retail, and green open plazas.'
+    id: 'dme',
+    nameSr: 'Delhi-Meerut Expressway (NH-09)',
+    nameEn: 'Delhi-Meerut Expressway (NH-09)',
+    car: '3 min',
+    walk: '10 min',
+    image: '/media/ghaziabad_master_plan_2031.png',
+    descSr: 'Ekspresni auto-put sa 14 traka povezuje lokaciju sa Akshardhamom u Delhiju za svega 30-35 minuta brze vožnje bez zastoja.',
+    descEn: '14-lane high-speed expressway providing smooth 30-minute signal-free connectivity to Akshardham, Anand Vihar, and East Delhi.'
   },
   {
-    id: 'hangar',
-    nameSr: 'Hangar Food Market',
-    nameEn: 'Hangar Food Market',
-    car: '2 min',
-    walk: '4 min',
-    image: '/home/around/hangar.webp',
-    descSr: 'Hangar Food Market u Airport City-ju savremeni je gastronomski koncept koji objedinjuje bogatu ponudu domaćih i svetskih kuhinja u živopisnom i moderno osmišljenom prostoru. Zahvaljujući prijatnoj atmosferi i pažljivo kreiranom ambijentu, predstavlja popularno mesto za poslovne susrete, opuštene obroke i druženja nakon posla.',
-    descEn: 'Hangar Food Market brings a modern international culinary hub to Airport City, pairing artisanal cuisine concepts with vibrant social dining atmospheres.'
-  },
-  {
-    id: 'aerodrom',
-    nameSr: 'Aerodrom Nikola Tesla',
-    nameEn: 'Nikola Tesla Airport',
-    car: '9 min',
+    id: 'rrts',
+    nameSr: 'Duhai RRTS Metro Station',
+    nameEn: 'Duhai RRTS Metro Station',
+    car: '8 min',
     walk: null,
-    image: '/home/around/aerodrom.webp',
-    descSr: 'Aerodrom Nikola Tesla glavni je međunarodni aerodrom u Srbiji i najvažnije vazdušno čvorište u zemlji. Kao matična baza kompanije Air Serbia, povezuje Beograd sa brojnim destinacijama širom Evrope, Bliskog istoka i Severne Amerike. Zahvaljujući značajnim ulaganjima u modernizaciju, danas putnicima pruža još viši nivo usluge i povezanosti sa brojnim svetskim destinacijama.',
-    descEn: 'Belgrade Nikola Tesla Airport is the central air transport gateway of the region, seamlessly connecting New Belgrade to worldwide destinations across Europe, the Middle East, and North America.'
+    image: '/media/videos/thumb_2.jpg',
+    descSr: 'Namo Bharat Rapid Rail (RRTS) stanica u Duhaiju omogućava ultrabrzu vožnju brzinom do 160 km/h do Anand Vihara, Sarai Kale Khan i Meeruta.',
+    descEn: 'Namo Bharat Rapid Rail Transit (RRTS) at Duhai connects you at 160 km/h high speed to Anand Vihar, New Delhi, and Meerut in minutes.'
+  },
+  {
+    id: 'dasna',
+    nameSr: 'Dasna & Muradnagar Market Hubs',
+    nameEn: 'Dasna & Muradnagar Commercial Hubs',
+    car: '4 min',
+    walk: '15 min',
+    image: '/media/golden_luxury_gate.jpg',
+    descSr: 'Glavni trgovački i komercijalni centri duž glavnog puta obezbeđuju sve dnevne potrebe, banke, klinike i restorane u neposrednoj blizini.',
+    descEn: 'Bustling commercial zones along Muradnagar Dasna Main Road provide daily shopping, banks, healthcare clinics, and essential retail hubs.'
+  },
+  {
+    id: 'badarpur',
+    nameSr: 'Badarpur / South Delhi Corporate Office',
+    nameEn: 'Badarpur Corporate Hub (Delhi)',
+    car: '35 min',
+    walk: null,
+    image: '/media/bill_address.jpg',
+    descSr: 'Glavno sedište kompanije nalazi se u Badarpuru, kod Metro stanice Gate No 2, direktno povezano preko auto-puta.',
+    descEn: 'Our Corporate & Administrative Headquarters is conveniently situated at Jaitpur Ext-2, Badarpur (Near Metro Gate 2), South Delhi.'
   }
 ];
 
@@ -169,18 +171,6 @@ export default function AroundSection({ lang = 'sr' }) {
       const planeMesh = new THREE.Mesh(planeGeo, planeMat);
       group.add(planeMesh);
 
-      // Central Building Box
-      const boxGeo = new THREE.BoxGeometry(0.04, 0.35, 0.04);
-      const boxMat = new THREE.MeshStandardMaterial({
-        color: 0xccbf99,
-        roughness: 0.3,
-        metalness: 0.2
-      });
-      const boxMesh = new THREE.Mesh(boxGeo, boxMat);
-      boxMesh.position.set(-2.42, -1.08, 0.02);
-      boxMesh.rotation.z = 1.09;
-      group.add(boxMesh);
-
       // Animation loop
       const animate = () => {
         if (isDisposed) return;
@@ -205,8 +195,6 @@ export default function AroundSection({ lang = 'sr' }) {
         window.removeEventListener('resize', onResize);
         planeGeo.dispose();
         planeMat.dispose();
-        boxGeo.dispose();
-        boxMat.dispose();
         renderer.dispose();
       };
     } catch (err) {
@@ -227,18 +215,21 @@ export default function AroundSection({ lang = 'sr' }) {
         <div className="reveal-content wrapper h-full w-full flex">
           
           {/* Left Column: Title, Interactive Italic List, and Travel Detail Box */}
-          <div className="w-1/3 max-xl:w-5/12 flex flex-col justify-between py-10 z-20">
+          <div className="w-[42%] max-xl:w-5/12 flex flex-col justify-between py-10 z-20 pr-6">
             <div>
               {/* Kicker */}
-              <p className="kicker uppercase text-golden text-xs tracking-widest font-semibold mb-6">
-                {"In the surroundings"}
-              </p>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2 h-2 rounded-full bg-[#b8892a]" />
+                <p className="kicker uppercase text-golden text-xs tracking-widest font-semibold">
+                  Township Surroundings & Connectivity
+                </p>
+              </div>
 
-              {/* List with Moving Active Indicator Line & Signature Slide-up Italic Clones */}
-              <div className="list border-b-golden/40 relative border-b pt-4 pb-8">
-                {/* Active Green Vertical Indicator Bar */}
+              {/* List with Moving Active Indicator Line */}
+              <div className="list border-b-golden/40 relative border-b pt-2 pb-6 space-y-2">
+                {/* Active Dark Blue Vertical Indicator Bar */}
                 <div
-                  className="bg-[#1a2a4a] pointer-events-none absolute -left-4 w-0.5 transition-all duration-300 ease-out"
+                  className="bg-[#1a2a4a] pointer-events-none absolute -left-4 w-1 rounded-full transition-all duration-300 ease-out"
                   style={{
                     top: `${indicatorTop}px`,
                     height: `${indicatorHeight}px`,
@@ -258,16 +249,19 @@ export default function AroundSection({ lang = 'sr' }) {
                       }}
                       onMouseLeave={() => setHoveredIdx(null)}
                       onClick={() => setActiveIdx(idx)}
-                      className="group relative cursor-pointer overflow-hidden py-3.5 flex items-center"
+                      className={`group relative cursor-pointer px-3 py-2 rounded-xl transition-all duration-200 flex items-center justify-between ${
+                        isActive ? 'bg-[#111e36]/10 text-[#1a2a4a]' : 'hover:bg-black/5 text-golden'
+                      }`}
                     >
-                      {isActive ? (
-                        <p className="heading-2 text-[#1a2a4a] text-3xl sm:text-4xl lg:text-[42px] font-serif italic leading-none transition-all duration-200">
-                          {item.nameEn}
-                        </p>
-                      ) : (
-                        <p className="heading-2 text-golden text-3xl sm:text-4xl lg:text-[42px] font-serif leading-none transition-colors duration-200 group-hover:text-[#1a2a4a]">
-                          {item.nameEn}
-                        </p>
+                      <p className={`font-serif text-base sm:text-lg lg:text-[20px] leading-snug transition-all duration-200 ${
+                        isActive ? 'text-[#1a2a4a] italic font-medium' : 'text-golden group-hover:text-[#1a2a4a]'
+                      }`}>
+                        {item.nameEn}
+                      </p>
+                      {item.car && (
+                        <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#b8892a]/15 text-[#8f6412] ml-2 shrink-0">
+                          {item.car}
+                        </span>
                       )}
                     </div>
                   );
@@ -395,59 +389,69 @@ export default function AroundSection({ lang = 'sr' }) {
                     draggable={false}
                   />
 
-                  {/* 3D ClearDeal Property Building Model placed directly at building plot on the map */}
+                  {/* Plotted Township 3D CAD Demarcation Ground Grid */}
                   <div
                     style={{
                       position: 'absolute',
-                      left: '39.8%',
-                      top: '41.5%',
+                      left: '42%',
+                      top: '38%',
                       transform: 'translate(-50%, -50%) rotate(18deg)',
                       transformStyle: 'preserve-3d'
                     }}
-                    className="pointer-events-none"
+                    className="pointer-events-none z-20"
                   >
-                    {/* 3D Extruded Block */}
-                    <div className="relative w-44 h-8 bg-[#d8ccaa] rounded-[2px] shadow-2xl border border-[#b8a67c]">
-                      {/* Top Face */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#dfd4b7] to-[#f0e6ce] opacity-95" />
-                      {/* 3D Angled Front Extrusion */}
-                      <div
-                        className="absolute -bottom-3 left-0 w-full h-3 bg-[#a8976e]"
-                        style={{
-                          transform: 'rotateX(-60deg)',
-                          transformOrigin: 'top'
-                        }}
-                      />
-                      {/* 3D Angled Side Extrusion */}
-                      <div
-                        className="absolute top-0 -left-2 w-2 h-full bg-[#92825b]"
-                        style={{
-                          transform: 'rotateY(60deg)',
-                          transformOrigin: 'right'
-                        }}
-                      />
+                    {/* Demarcated Plotted Land Master Plan Tile covering old graphics */}
+                    <div className="relative w-56 h-28 bg-[#0d1424] rounded-lg shadow-2xl border-2 border-[#b8892a] overflow-hidden flex flex-col justify-between p-2.5">
+                      <div className="flex items-center justify-between border-b border-[#b8892a]/30 pb-1">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-[#b8892a] animate-ping" />
+                          <span className="text-[10px] uppercase font-bold text-[#e8dfc8] tracking-wider font-serif">
+                            Golden Luxury Homes
+                          </span>
+                        </div>
+                        <span className="text-[9px] font-mono text-[#b8892a] font-semibold bg-[#b8892a]/20 px-1.5 py-0.5 rounded">
+                          155 PLOTS
+                        </span>
+                      </div>
+                      
+                      {/* CAD Grid Simulation */}
+                      <div className="grid grid-cols-6 gap-0.5 my-1 opacity-80">
+                        {Array.from({ length: 18 }).map((_, i) => (
+                          <div
+                            key={i}
+                            className="h-3 border border-[#b8892a]/40 bg-[#1a2a4a]/80 text-[7px] text-[#e8dfc8]/80 font-mono flex items-center justify-center font-bold"
+                          >
+                            P{i + 1}
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center justify-between text-[8px] font-mono text-[#e8dfc8]/90 pt-1 border-t border-[#b8892a]/20">
+                        <span>25FT MAIN BOULEVARD</span>
+                        <span className="text-[#b8892a] font-bold">FREEHOLD REGISTRY</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Central ClearDeal Property Building Pin (Crisp on top of mask) */}
+            {/* Central Golden Luxury Homes Township Pin */}
             <div
               style={{
                 position: 'absolute',
-                left: ARBOR_PIN_POS.left,
-                top: ARBOR_PIN_POS.top,
+                left: '52.0%',
+                top: '38.0%',
                 transform: `translate3d(calc(-50% + ${mouseTilt.x * 0.5}px), calc(-80% + ${mouseTilt.y * 0.5}px), 0px)`,
-                zIndex: 25
+                zIndex: 35
               }}
               className="pointer-events-none flex flex-col items-center"
             >
-              <img
-                src="/icons/arbor-pin.svg"
-                alt="ClearDeal Property"
-                className="h-16 w-10 drop-shadow-xl"
-              />
+              <div className="px-3 py-1.5 rounded-full bg-[#111e36] text-[#b8892a] border border-[#b8892a] shadow-2xl flex items-center gap-2 whitespace-nowrap">
+                <span className="w-2 h-2 rounded-full bg-[#b8892a] animate-ping"></span>
+                <span className="font-serif text-[11px] font-bold uppercase tracking-wider text-white">Golden Luxury Homes • 155 Plots</span>
+              </div>
+              <div className="w-0.5 h-6 bg-gradient-to-b from-[#b8892a] to-transparent"></div>
             </div>
 
             {/* Interactive Landmark Pins Placed at Exact Reference Coordinates (Outside mask for crystal clarity) */}

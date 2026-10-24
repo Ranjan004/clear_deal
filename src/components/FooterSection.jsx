@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Instagram, MessageCircle, Phone, Mail } from 'lucide-react';
 
 export default function FooterSection({ lang, onOpenInquiry, onOpenInvestor }) {
   const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', consent: false });
@@ -26,24 +27,24 @@ export default function FooterSection({ lang, onOpenInquiry, onOpenInvestor }) {
             <p className="heading-2 leading-tight font-light uppercase text-[#2f3a26]">
               {"Step into the world of ClearDeal Property"}
             </p>
-            <p className="paragraph mt-6 text-[#2f3a26]/80">
-              {"Subscribe to join our community and stay informed on our latest developments."}
+            <p className="paragraph mt-4 text-[#2f3a26]/80 text-sm">
+              {"Subscribe to join our community and stay informed on our latest plotted developments & CAD releases."}
             </p>
 
             {submitted ? (
-              <div className="mt-10 p-5 rounded-2xl bg-white/40 border border-[#2f3a26]/20 text-[#2f3a26]">
+              <div className="mt-8 p-5 rounded-2xl bg-white/70 backdrop-blur-md border border-[#2f3a26]/20 text-[#2f3a26]">
                 <p className="font-serif text-lg font-medium">
                   {"Thank you for subscribing!"}
                 </p>
                 <p className="text-xs mt-1 text-[#2f3a26]/70">
-                  {"We will share our newest updates with you soon."}
+                  {"We will share our newest layout updates with you soon."}
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-10 flex w-3/4 flex-col items-start gap-6 max-md:mt-15 max-md:w-full">
-                <div className="flex w-full gap-4 max-md:flex-wrap max-md:gap-6">
+              <form onSubmit={handleSubmit} className="mt-8 flex w-3/4 flex-col items-start gap-5 max-md:w-full">
+                <div className="flex w-full gap-4 max-md:flex-wrap max-md:gap-5">
                   <div className="fadeElement w-1/2 max-md:w-full">
-                    <label htmlFor="footer-first-name" className="small mb-2 block text-golden uppercase text-xs tracking-wider font-semibold">
+                    <label htmlFor="footer-first-name" className="small mb-1 block text-golden uppercase text-[11px] tracking-wider font-semibold">
                       {"First Name*"}
                     </label>
                     <input
@@ -52,11 +53,11 @@ export default function FooterSection({ lang, onOpenInquiry, onOpenInvestor }) {
                       required
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      className="paragraph border-[#1a2a4a] text-[#1a2a4a] placeholder:text-[#1a2a4a] focus:border-[#2f3a26] w-full border-0 border-b border-[#2f3a26]/40 bg-transparent pb-1 outline-none transition-colors"
+                      className="paragraph border-[#1a2a4a] text-[#1a2a4a] placeholder:text-[#1a2a4a] focus:border-[#2f3a26] w-full border-0 border-b border-[#2f3a26]/40 bg-transparent pb-1 outline-none transition-colors text-sm"
                     />
                   </div>
                   <div className="fadeElement w-1/2 max-md:w-full">
-                    <label htmlFor="footer-last-name" className="small mb-2 block text-golden uppercase text-xs tracking-wider font-semibold">
+                    <label htmlFor="footer-last-name" className="small mb-1 block text-golden uppercase text-[11px] tracking-wider font-semibold">
                       {"Last Name*"}
                     </label>
                     <input
@@ -65,13 +66,13 @@ export default function FooterSection({ lang, onOpenInquiry, onOpenInvestor }) {
                       required
                       value={formData.lastName}
                       onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      className="paragraph border-[#1a2a4a] text-[#1a2a4a] placeholder:text-[#1a2a4a] focus:border-[#2f3a26] w-full border-0 border-b border-[#2f3a26]/40 bg-transparent pb-1 outline-none transition-colors"
+                      className="paragraph border-[#1a2a4a] text-[#1a2a4a] placeholder:text-[#1a2a4a] focus:border-[#2f3a26] w-full border-0 border-b border-[#2f3a26]/40 bg-transparent pb-1 outline-none transition-colors text-sm"
                     />
                   </div>
                 </div>
 
                 <div className="fadeElement w-full">
-                  <label htmlFor="footer-email" className="small mb-2 block text-golden uppercase text-xs tracking-wider font-semibold">
+                  <label htmlFor="footer-email" className="small mb-1 block text-golden uppercase text-[11px] tracking-wider font-semibold">
                     {"Email*"}
                   </label>
                   <input
@@ -80,26 +81,26 @@ export default function FooterSection({ lang, onOpenInquiry, onOpenInvestor }) {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="paragraph border-[#1a2a4a] text-[#1a2a4a] placeholder:text-[#1a2a4a] focus:border-[#2f3a26] w-full border-0 border-b border-[#2f3a26]/40 bg-transparent pb-1 outline-none transition-colors"
+                    className="paragraph border-[#1a2a4a] text-[#1a2a4a] placeholder:text-[#1a2a4a] focus:border-[#2f3a26] w-full border-0 border-b border-[#2f3a26]/40 bg-transparent pb-1 outline-none transition-colors text-sm"
                   />
                 </div>
 
-                <label className="fadeElement my-4 flex cursor-pointer items-start gap-3">
+                <label className="fadeElement my-2 flex cursor-pointer items-start gap-2.5">
                   <input
                     type="checkbox"
                     required
                     checked={formData.consent}
                     onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                    className="mt-1 size-4 rounded-none border border-green text-[#1a2a4a] accent-[#2f3a26] cursor-pointer"
+                    className="mt-0.5 size-4 rounded-none border border-green text-[#1a2a4a] accent-[#2f3a26] cursor-pointer"
                   />
-                  <span className="small text-golden text-xs leading-relaxed text-[#2f3a26]/80">
-                    {"I consent to the collection and processing of my personal data in accordance with the ClearDeal Property Privacy Policy."}
+                  <span className="small text-golden text-[11px] leading-relaxed text-[#2f3a26]/80">
+                    {"I consent to the collection of my data in accordance with the ClearDeal Property Privacy Policy."}
                   </span>
                 </label>
 
                 <button 
                   type="submit" 
-                  className="link fadeElement font-serif text-lg uppercase tracking-wider text-[#2f3a26] hover:text-[#3E562E] transition-colors border-b border-[#2f3a26] pb-1 cursor-pointer"
+                  className="link fadeElement font-serif text-base uppercase tracking-wider text-[#2f3a26] hover:text-[#3E562E] transition-colors border-b border-[#2f3a26] pb-1 cursor-pointer"
                 >
                   {"Take the first step"}
                 </button>
@@ -111,56 +112,126 @@ export default function FooterSection({ lang, onOpenInquiry, onOpenInvestor }) {
 
           {/* Navigation Links Column */}
           <div className="w-1/6 max-lg:w-1/3 max-md:flex max-md:w-full max-md:flex-col max-md:items-center">
-            <ul className="space-y-3 font-sans text-sm">
+            <span className="text-[10px] uppercase font-bold text-[#b8892a] tracking-widest block mb-4">
+              Navigation
+            </span>
+            <ul className="space-y-2.5 font-sans text-xs sm:text-sm">
               <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/">{"Home"}</Link></li>
-              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/residences">{"Residences"}</Link></li>
-              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/business-spaces">{"Business Spaces"}</Link></li>
-              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/retail-spaces">{"Retail Spaces"}</Link></li>
-              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/location">{"Location"}</Link></li>
-              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/amenities">{"Amenities"}</Link></li>
-              <li className="fadeElement max-md:text-center"><button onClick={onOpenInquiry} className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26] cursor-pointer text-left max-md:text-center">{"Contact"}</button></li>
-              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/about">{"About the Investor"}</Link></li>
+              <li className="fadeElement max-md:text-center"><a className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" href="/#MasterPlan">{"155 Plots Layout"}</a></li>
+              <li className="fadeElement max-md:text-center"><a className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" href="/#SiteVideos">{"Drone Site Videos"}</a></li>
+              <li className="fadeElement max-md:text-center"><a className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" href="/#GateShowcase">{"Grand Entrance Arch"}</a></li>
+              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/location">{"Location & Highways"}</Link></li>
+              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/amenities">{"Township Amenities"}</Link></li>
+              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/about">{"About ClearDeal"}</Link></li>
+              <li className="fadeElement max-md:text-center"><Link className="hover:text-green paragraph font-normal uppercase transition text-[#2f3a26]" to="/contact">{"Contact Office"}</Link></li>
             </ul>
-            <Link className="paragraph fadeElement hover:text-green transition font-normal mt-10 inline-block max-md:mt-4 text-[#2f3a26]" to="/privacy-policy">
+            <Link className="paragraph fadeElement hover:text-green transition font-normal mt-6 inline-block text-[11px] text-[#2f3a26]/75" to="/privacy-policy">
               {"Privacy Policy"}
             </Link>
-            <Link className="paragraph fadeElement hover:text-green transition font-normal mt-2 inline-block text-[#2f3a26]" to="/terms">
+            <Link className="paragraph fadeElement hover:text-green transition font-normal mt-1 inline-block text-[11px] text-[#2f3a26]/75" to="/terms">
               {"Terms & Conditions"}
             </Link>
           </div>
 
-          {/* Socials Column */}
+          {/* Socials Column: Instagram updated, Facebook removed */}
           <div className="w-1/12 max-lg:w-1/6 max-md:w-full">
-            <ul className="space-y-3 font-sans text-sm max-md:flex max-md:flex-col max-md:items-center">
-              <li className="fadeElement"><a target="_blank" rel="noopener noreferrer" className="hover:text-green text-golden paragraph font-normal transition text-[#2f3a26]" href="https://www.instagram.com/belgradearbor/">Instagram</a></li>
-              <li className="fadeElement"><a target="_blank" rel="noopener noreferrer" className="hover:text-green text-golden paragraph font-normal transition text-[#2f3a26]" href="https://www.linkedin.com/company/belgrade-arbor">Linkedin</a></li>
-              <li className="fadeElement"><a target="_blank" rel="noopener noreferrer" className="hover:text-green text-golden paragraph font-normal transition text-[#2f3a26]" href="https://www.facebook.com/belgradearbor/">Facebook</a></li>
+            <span className="text-[10px] uppercase font-bold text-[#b8892a] tracking-widest block mb-4 max-md:text-center">
+              Social
+            </span>
+            <ul className="space-y-3 font-sans text-xs sm:text-sm max-md:flex max-md:flex-col max-md:items-center">
+              <li className="fadeElement">
+                <a 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#b8892a] font-normal transition text-[#2f3a26] flex items-center gap-1.5" 
+                  href="https://www.instagram.com/cleardeal.property"
+                >
+                  <Instagram className="w-4 h-4 text-[#b8892a]" />
+                  <span>Instagram</span>
+                </a>
+              </li>
+              <li className="fadeElement">
+                <a 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#25D366] font-normal transition text-[#2f3a26] flex items-center gap-1.5" 
+                  href="https://wa.me/918979953557"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  <span>WhatsApp</span>
+                </a>
+              </li>
             </ul>
           </div>
 
           <div className="w-1/12 max-2xl:hidden" />
 
-          {/* Legal Note & Direct Inquiries Phone */}
-          <div className="w-1/4 max-lg:w-5/12 max-md:w-full text-xs text-[#2f3a26]/70 leading-relaxed font-sans">
-            <p className="small">
-              {"Disclaimer: Minor architectural and facade finishes variations may occur upon final completion relative to artistic renders. Room numbering adheres to the Real Estate Cadastre system of the Republic of Serbia."}
-            </p>
-            <div className="mt-6 flex flex-col">
-              <span className="text-xs uppercase tracking-wider text-[#2f3a26]/60">
-                {"For direct inquiries, contact our sales lounge:"}
+          {/* Legal Note & Addresses with clean backdrop card for readability */}
+          <div className="w-1/3 max-lg:w-full text-xs text-[#2f3a26]/80 leading-relaxed font-sans space-y-3.5">
+            
+            {/* Corporate Office Address from Bill */}
+            <div className="p-4 rounded-2xl bg-white/75 backdrop-blur-md border border-[#2f3a26]/15 shadow-sm">
+              <span className="text-[10px] uppercase tracking-wider font-bold text-[#b8892a] block mb-1">
+                REGISTERED & CORPORATE OFFICE
               </span>
-              <p className="mt-1">
-                <a href="tel:+38169684444" className="text-golden font-serif text-2xl text-[#2f3a26] font-semibold hover:underline">
-                  +381 69 68 44 44
-                </a>
+              <p className="text-[12px] font-medium text-[#2f3a26] leading-snug">
+                Burhanuddin House No. 1-68, Kh. No. 797, Block-I, Ground Floor, Jaitpur Extension Part-2, Badarpur, Delhi - 110044
+              </p>
+              <p className="text-[10px] text-[#2f3a26]/70 mt-1">
+                Landmark: Near Badarpur Metro Station (Gate No. 2), Sarita Vihar Division
               </p>
             </div>
+
+            {/* Project Site Address */}
+            <div className="p-4 rounded-2xl bg-white/75 backdrop-blur-md border border-[#2f3a26]/15 shadow-sm">
+              <span className="text-[10px] uppercase tracking-wider font-bold text-[#b8892a] block mb-1">
+                RECENT PLOTTED TOWNSHIP SITE
+              </span>
+              <p className="text-[12px] font-medium text-[#2f3a26] leading-snug">
+                Golden Luxury Homes, Muradnagar Dasna Main Road, Kallu Garhi, Ghaziabad (NCR), UP
+              </p>
+              <p className="text-[10px] text-[#2f3a26]/70 mt-1">
+                Direct entry from Eastern Peripheral & Delhi-Meerut Expressway
+              </p>
+            </div>
+
+            {/* Direct Sales & Contact Box */}
+            <div className="p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-[#b8892a]/30 shadow-md">
+              <span className="text-[10px] uppercase tracking-wider text-[#2f3a26]/80 font-bold block mb-2">
+                DIRECT SALES & SITE VISIT INQUIRIES:
+              </span>
+              <div className="space-y-2">
+                <div>
+                  <span className="text-[9px] uppercase font-bold text-[#8f6412] block">
+                    Er. Mohd Shakib (Call & WhatsApp)
+                  </span>
+                  <a href="tel:+918979953557" className="font-mono text-base sm:text-lg text-[#111e36] font-bold hover:text-[#8f6412] transition-colors">
+                    +91 89799 53557
+                  </a>
+                </div>
+                <div>
+                  <span className="text-[9px] uppercase font-bold text-[#1e7e34] block">
+                    Abdul Hamid (WhatsApp / Demarcation)
+                  </span>
+                  <a href="https://wa.me/919718865748" target="_blank" rel="noopener noreferrer" className="font-mono text-base sm:text-lg text-[#111e36] font-bold hover:text-[#1e7e34] transition-colors">
+                    +91 97188 65748
+                  </a>
+                </div>
+                <div className="pt-1 border-t border-[#2f3a26]/10">
+                  <a href="mailto:cleardeal.property@gmail.com" className="text-xs font-mono font-semibold text-[#8f6412] hover:underline flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>cleardeal.property@gmail.com</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
 
         </div>
       </div>
 
-      {/* 3D Silhouette Tree Landscape Layers */}
+      {/* 3D Silhouette Tree Landscape Layers (Restored as requested) */}
       <div className="pointer-events-none -mt-200 w-full overflow-clip select-none max-2xl:-mt-150 max-lg:-mt-120 max-lg:flex max-lg:items-center max-lg:justify-end max-md:-mt-70">
         <img
           alt="footer front"
@@ -191,22 +262,26 @@ export default function FooterSection({ lang, onOpenInquiry, onOpenInvestor }) {
         </div>
       </div>
 
-      {/* Absolute Bottom Bar: Copyright & Big Arbor Title */}
+      {/* Absolute Bottom Bar: Copyright & Big ClearDeal Property Title */}
       <div className="absolute bottom-15 left-0 z-10 w-full max-md:bottom-10 pointer-events-none">
         <div className="wrapper flex items-end justify-between max-lg:flex-col-reverse max-lg:items-center max-lg:gap-5">
-          <div className="small text-cream w-1/6 max-lg:w-full max-lg:text-center max-md:text-[0.625rem] text-[#FFF4D6] opacity-90 select-none">
-            ©2026. {"All rights reserved."}
+          <div className="small text-cream w-1/3 max-lg:w-full max-lg:text-center max-md:text-[0.625rem] text-[#FFF4D6] opacity-90 select-none">
+            <p className="font-semibold">© 2026 ClearDeal Property. All rights reserved.</p>
+            <p className="text-[11px] opacity-75 mt-0.5">Recent Plotted Township: Golden Luxury Homes (155 Plots)</p>
           </div>
           <div className="heading-1 text-cream w-7/12 text-right font-light uppercase max-xl:w-2/3 max-lg:w-full max-lg:text-center pointer-events-auto">
             <span 
               className="select-none leading-none block text-[#FFF4D6] tracking-normal font-light"
               style={{
                 fontFamily: 'PPEditorialOld, Georgia, serif',
-                fontSize: 'clamp(3rem, 7vw, 6.25rem)',
-                textShadow: '0 2px 20px rgba(0,0,0,0.2)'
+                fontSize: 'clamp(2.5rem, 5.5vw, 4.8rem)',
+                textShadow: '0 2px 20px rgba(0,0,0,0.3)'
               }}
             >
               ClearDeal Property
+            </span>
+            <span className="block font-mono text-[11px] tracking-[0.25em] text-[#FFF4D6]/90 mt-1 uppercase">
+              Recent Project: Golden Luxury Homes (155 Plots)
             </span>
           </div>
         </div>

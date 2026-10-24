@@ -10,15 +10,27 @@ export default function Navbar({ lang, setLang, t, onOpenInquiry, onOpenInvestor
     navigate(path);
   };
 
+  const scrollToSection = (id) => {
+    setIsOpen(false);
+    if (window.location.pathname !== '/') {
+      navigate('/#' + id);
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   const navItems = [
-    { label: 'Home',               action: () => go('/') },
-    { label: 'Residences',         action: () => go('/residences') },
-    { label: 'Business Spaces',    action: () => go('/business-spaces') },
-    { label: 'Retail Spaces',      action: () => go('/retail-spaces') },
-    { label: 'Location',           action: () => go('/location') },
-    { label: 'Amenities',          action: () => go('/amenities') },
-    { label: 'Contact',            action: () => go('/contact') },
-    { label: 'About the Investor', action: () => go('/about') },
+    { label: 'Home',                     action: () => go('/') },
+    { label: 'Recent Project: 155 Plots', action: () => scrollToSection('MasterPlan') },
+    { label: 'Drone & Site Videos',      action: () => scrollToSection('SiteVideos') },
+    { label: 'Entrance Arch & Gate',     action: () => scrollToSection('GateShowcase') },
+    { label: 'Location & Highways',      action: () => go('/location') },
+    { label: 'Township Amenities',       action: () => go('/amenities') },
+    { label: 'About ClearDeal',          action: () => go('/about') },
+    { label: 'Contact Office',           action: () => go('/contact') },
   ];
 
   return (
@@ -115,9 +127,14 @@ export default function Navbar({ lang, setLang, t, onOpenInquiry, onOpenInvestor
                 className="rounded-full object-cover ring-2 ring-[#b8892a]/50 transition-transform group-hover:scale-105"
                 style={{ width: '44px', height: '44px' }}
               />
-              <span className="font-serif uppercase tracking-[0.15em] text-sm text-[#b8892a] leading-tight">
-                ClearDeal<br className="sm:hidden" /><span className="hidden sm:inline"> </span>Property
-              </span>
+              <div>
+                <span className="font-serif uppercase tracking-[0.15em] text-sm text-[#b8892a] leading-tight block">
+                  ClearDeal Property
+                </span>
+                <span className="text-[10px] font-sans text-white/60 tracking-wider">
+                  Aapki Sahi Deal • Land Developers
+                </span>
+              </div>
             </button>
 
             {/* Close */}

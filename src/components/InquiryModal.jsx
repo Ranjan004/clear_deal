@@ -74,13 +74,13 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
             {/* Header */}
             <div className="space-y-2">
               <span className="text-[10px] tracking-[0.25em] uppercase text-[#ccbf99] font-bold block">
-                BELGRADE ARBOR • EXCLUSIVE ENQUIRY
+                GOLDEN LUXURY HOMES • GHAZIABAD NCR
               </span>
-              <h3 className="font-serif text-2xl sm:text-4xl font-light text-[#fdfbef]">
-                {footer.heading || ("Step Into the World of ClearDeal Property")}
+              <h3 className="font-serif text-2xl sm:text-3xl font-light text-[#fdfbef]">
+                {"Book Your Freehold Plot / Site Visit"}
               </h3>
               <p className="font-sans text-xs sm:text-sm text-[#fdfbef]/70 font-light">
-                {'Complete the form to schedule a private viewing or receive unit brochures.'}
+                {'Complete the form to receive plot pricing, immediate registry details, or schedule an on-ground site visit.'}
               </p>
             </div>
 
@@ -90,7 +90,7 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-[11px] font-sans uppercase tracking-wider text-[#ccbf99] block mb-1">
-                    {footer.firstName || ("First Name*")}
+                    {"First Name*"}
                   </label>
                   <input
                     type="text"
@@ -98,12 +98,12 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#ccbf99] transition-colors"
-                    placeholder="Milan"
+                    placeholder="Rahul"
                   />
                 </div>
                 <div>
                   <label className="text-[11px] font-sans uppercase tracking-wider text-[#ccbf99] block mb-1">
-                    {footer.lastName || ("Last Name*")}
+                    {"Last Name*"}
                   </label>
                   <input
                     type="text"
@@ -111,7 +111,7 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#ccbf99] transition-colors"
-                    placeholder="Petrović"
+                    placeholder="Sharma"
                   />
                 </div>
               </div>
@@ -119,7 +119,7 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-[11px] font-sans uppercase tracking-wider text-[#ccbf99] block mb-1">
-                    {footer.email || "Email*"}
+                    {"Email*"}
                   </label>
                   <input
                     type="email"
@@ -127,12 +127,12 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#ccbf99] transition-colors"
-                    placeholder="milan@example.com"
+                    placeholder="rahul@example.com"
                   />
                 </div>
                 <div>
                   <label className="text-[11px] font-sans uppercase tracking-wider text-[#ccbf99] block mb-1">
-                    {"Phone*"}
+                    {"Phone / WhatsApp*"}
                   </label>
                   <input
                     type="tel"
@@ -140,7 +140,7 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#ccbf99] transition-colors"
-                    placeholder="+381 6..."
+                    placeholder="+91 98..."
                   />
                 </div>
               </div>
@@ -155,13 +155,12 @@ export default function InquiryModal({ isOpen, onClose, lang, t }) {
                   onChange={(e) => setFormData({ ...formData, unitType: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-xl bg-[#171e16] border border-white/15 text-white text-sm focus:outline-none focus:border-[#ccbf99] transition-colors"
                 >
-                  <option value="studio">{"Studio"}</option>
-                  <option value="two-room">{"One-Bedroom Apartment"}</option>
-                  <option value="three-room">{"Two-Bedroom Apartment"}</option>
-                  <option value="four-room">{"Three-Bedroom Family Suite"}</option>
-                  <option value="penthouse">{"Sky Penthouse"}</option>
-                  <option value="office">{"Commercial Office"}</option>
-                  <option value="retail">{"Retail Space"}</option>
+                  <option value="plot-compact">{"Compact Plot (58 - 75 Sq. Yards)"}</option>
+                  <option value="plot-executive">{"Executive Villa Plot (78 - 100 Sq. Yards)"}</option>
+                  <option value="plot-premium">{"Premium Plot (110 - 135 Sq. Yards)"}</option>
+                  <option value="plot-corner">{"Luxury Corner Plot (139 - 195 Sq. Yards)"}</option>
+                  <option value="commercial-shop">{"Commercial / Road Frontage Plot"}</option>
+                  <option value="site-visit">{"Book Free Site Visit (Pickup available)"}</option>
                 </select>
               </div>
 

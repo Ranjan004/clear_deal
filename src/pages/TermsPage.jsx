@@ -80,9 +80,9 @@ Our total liability in connection with these terms shall not exceed the amount p
     content: `For questions regarding these Terms and Conditions, please contact us:
 
 ClearDeal Property
-Email: info@cleardealproperty.com
-Phone: +381 69 68 44 44
-Address: Bulevar heroja sa Košara, Novi Beograd, Serbia`,
+Email: cleardeal.property@gmail.com
+Phone: +91 89799 53557 / +91 97188 65748
+Address: Burhanuddin House No 1-68, Kh. No. 797, Block-I, Ground Floor, Jaitpur Extension Part-2, Badarpur, Delhi - 110044`,
   },
 ];
 

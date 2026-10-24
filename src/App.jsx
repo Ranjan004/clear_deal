@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import FooterSection from './components/FooterSection';
 import InquiryModal from './components/InquiryModal';
 import AboutInvestorModal from './components/AboutInvestorModal';
+import FloatingContactWidget from './components/FloatingContactWidget';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -135,6 +136,9 @@ export default function App() {
         lang={lang}
         t={t}
       />
+
+      {/* Floating Call & WhatsApp Quick Contact Widget */}
+      <FloatingContactWidget />
 
     </div>
   );

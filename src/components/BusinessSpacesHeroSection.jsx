@@ -12,8 +12,8 @@ export default function BusinessSpacesHeroSection({ lang }) {
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
 
-  const headingText = "Commercial Spaces & Retail";
-  const paragraphText = "Commercial units and retail premises at ClearDeal Property are tailored for enterprises that view their business address as an emblem of identity, prestige and enduring forward vision.";
+  const headingText = "Commercial Plots";
+  const paragraphText = "Commercial and retail plots strategically planned along Muradnagar Dasna Main Road and the 25-ft central boulevard. Ideal for shopping complexes, grocery supermarkets, medical clinics, and daily retail serving a vibrant residential catchment.";
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -110,31 +110,39 @@ export default function BusinessSpacesHeroSection({ lang }) {
         ref={triggerRef}
         className="trigger relative flex min-h-screen w-full flex-col justify-between overflow-clip py-24 pt-28 max-xl:py-20 max-xl:pt-24 max-lg:pt-24 max-lg:pb-16 max-md:py-16 max-md:pt-24"
       >
-        {/* Full-bleed rich green chair background image */}
+        {/* Full-bleed background */}
         <img
           ref={bgRef}
-          src="/home/business/business.webp"
-          alt="Business Spaces"
-          className="background absolute top-1/3 h-[calc(100%+35rem)] w-full -translate-y-1/2 object-cover pointer-events-none select-none"
+          src="/media/golden_luxury_gate.jpg"
+          alt="Commercial Plots"
+          className="background absolute top-1/3 h-[calc(100%+35rem)] w-full -translate-y-1/2 object-cover filter brightness-[0.4] pointer-events-none select-none"
           loading="eager"
         />
 
         {/* Dark overlay for text visibility */}
-        <div className="pointer-events-none absolute inset-0 bg-[#111e36]/75" />
+        <div className="pointer-events-none absolute inset-0 bg-[#0d1424]/75" />
 
         {/* Top: Large Editorial Title */}
         <div className="wrapper relative z-1">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#b8892a]/20 border border-[#b8892a]/40 text-[#e8dfc8] text-xs font-semibold uppercase tracking-widest mb-4">
+            <span className="w-2 h-2 rounded-full bg-[#b8892a] animate-ping" />
+            <span>Highway Frontage & Central Boulevard</span>
+          </div>
           <h2
             ref={headingRef}
-            className="hero text-cream-dark uppercase font-serif tracking-tight leading-[0.95] text-[7.5rem] max-2xl:text-[6.2rem] max-xl:text-[5rem] max-lg:text-[3.8rem] max-md:text-[2.6rem] w-[55%] max-xl:w-3/4 max-lg:w-full"
+            className="hero text-cream-dark uppercase font-serif tracking-tight leading-[0.95] text-[6.5rem] max-2xl:text-[5.5rem] max-xl:text-[4.5rem] max-lg:text-[3.5rem] max-md:text-[2.4rem] w-full max-w-4xl"
           >
             <span className="inline-block overflow-hidden">
-              {headingText.split("").map((char, idx) => (
-                <span
-                  key={idx}
-                  className="biz-char inline-block will-change-transform"
-                >
-                  {char === " " ? "\u00A0" : char}
+              {headingText.split(" ").map((word, wIdx) => (
+                <span key={wIdx} className="inline-block whitespace-nowrap mr-[0.3em]">
+                  {word.split("").map((char, cIdx) => (
+                    <span
+                      key={cIdx}
+                      className="biz-char inline-block will-change-transform"
+                    >
+                      {char}
+                    </span>
+                  ))}
                 </span>
               ))}
             </span>
@@ -171,7 +179,7 @@ export default function BusinessSpacesHeroSection({ lang }) {
                 loop
                 playsInline
                 autoPlay
-                src="/home/business/business.mp4"
+                src="/media/videos/site_tour_1.mp4"
                 className="biz-portrait portrait absolute inset-0 h-full w-full object-cover object-center scale-105 will-change-transform"
               />
             </div>

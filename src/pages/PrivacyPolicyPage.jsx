@@ -87,9 +87,9 @@ To exercise any of these rights, please contact us using the details below.`,
     content: `If you have any questions about this Privacy Policy or wish to exercise your data rights, please contact us:
 
 ClearDeal Property
-Email: info@cleardealproperty.com
-Phone: +381 69 68 44 44
-Address: Bulevar heroja sa Košara, Novi Beograd, Serbia`,
+Email: cleardeal.property@gmail.com
+Phone: +91 89799 53557 / +91 97188 65748
+Address: Burhanuddin House No 1-68, Kh. No. 797, Block-I, Ground Floor, Jaitpur Extension Part-2, Badarpur, Delhi - 110044`,
   },
 ];
 

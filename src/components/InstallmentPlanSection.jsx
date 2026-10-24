@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FileText, CheckCircle2, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,18 +10,16 @@ export default function InstallmentPlanSection({ lang, onOpenInquiry }) {
   const imageRef = useRef(null);
 
   const stages = [
-    { percent: '20%', label: 'Preliminary contract signing' },
-    { percent: '20%', label: 'Foundation level completion' },
-    { percent: '20%', label: 'Structural roof framework completion' },
-    { percent: '30%', label: '80% construction milestone' },
-    { percent: '10%', label: 'Technical reception & key handover' },
+    { percent: '10%', label: 'Booking Token & Plot Number Allotment (Plot 1 - 155)' },
+    { percent: '25%', label: 'Agreement to Sell & Complete Legal Title Verification' },
+    { percent: '35%', label: 'Site Demarcation & Infrastructure Handover (Roads & Electricity)' },
+    { percent: '30%', label: 'Sub-Registrar Registry, Dakhil Kharij & Immediate Possession' },
   ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.to(imageRef.current, {
-        scale: 1.15,
-        yPercent: -10,
+        scale: 1.05,
         ease: 'none',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -35,53 +34,57 @@ export default function InstallmentPlanSection({ lang, onOpenInquiry }) {
   }, []);
 
   return (
-    <section id="Installment" ref={sectionRef} className="relative z-1">
+    <section id="Installment" ref={sectionRef} className="relative z-1 border-t border-[#b8892a]/20">
       <div className="installment-trigger trigger relative flex min-h-screen items-stretch overflow-clip max-md:min-h-auto max-md:flex-col">
         
-        {/* Left Side: 55vw Blueprint Architectural Zoom */}
-        <div className="installment-reveal-image absolute top-0 left-0 z-0 h-full w-[55vw] max-xl:w-1/2 max-lg:w-full max-md:relative max-md:h-auto max-md:w-full">
-          <div className="relative h-full w-full max-md:h-[34rem]">
-            <div className="reveal-image-zoom relative h-full w-full overflow-hidden">
+        {/* Left Side: 55vw Layout Blueprint Visual */}
+        <div className="installment-reveal-image absolute top-0 left-0 z-0 h-full w-[55vw] max-xl:w-1/2 max-lg:w-full max-md:relative max-md:h-auto max-md:w-full bg-[#0d1424]">
+          <div className="relative h-full w-full max-md:h-[34rem] flex items-center justify-center p-6 sm:p-12">
+            <div className="reveal-image-zoom relative h-full w-full overflow-hidden rounded-2xl border border-[#b8892a]/30 shadow-2xl flex items-center justify-center bg-[#070b14]">
               <img
                 ref={imageRef}
-                src="/home/installment/image.webp"
-                alt="Installment plan"
+                src="/media/golden_luxury_layout.png"
+                alt="Golden Luxury Homes Layout Plan"
                 loading="lazy"
                 decoding="async"
-                className="installment-parallax absolute inset-0 h-full w-full object-cover max-lg:hidden"
+                className="installment-parallax h-full w-full object-contain p-2"
               />
-              <img
-                src="/home/installment/image-t.webp"
-                alt="Installment plan"
-                loading="lazy"
-                decoding="async"
-                className="installment-parallax absolute inset-0 hidden h-full w-full object-cover max-lg:block max-md:relative max-md:h-[34rem]"
-              />
+              <div className="absolute bottom-4 left-4 bg-black/75 px-3 py-1 rounded text-white text-xs font-mono">
+                Approved 155 Plotted Township Model
+              </div>
             </div>
           </div>
         </div>
 
         {/* Right Side Background: 45vw Luxury Radial Gradient */}
-        <div className="pointer-events-none absolute top-0 right-0 h-full w-[45vw] bg-[radial-gradient(at_right_bottom,#3E562E,#2F3A26)] max-xl:w-1/2 max-lg:hidden"></div>
+        <div className="pointer-events-none absolute top-0 right-0 h-full w-[45vw] bg-[radial-gradient(at_right_bottom,#1a3060,#111e36)] max-xl:w-1/2 max-lg:hidden"></div>
 
         {/* Content Box Overlaid on the Right */}
         <div className="installment-reveal-content relative z-1 flex w-full justify-end max-lg:px-10 max-md:px-4">
           <div className="wrapper flex justify-end py-20 max-xl:py-15 max-lg:px-0 max-lg:py-15 w-full">
-            <div className="flex w-5/12 flex-col max-xl:w-1/2 max-lg:mt-120 max-lg:w-full max-lg:rounded-2xl max-lg:bg-[radial-gradient(at_right_bottom,#3E562E,#2F3A26)] max-lg:px-8 max-lg:py-8 max-md:mt-0">
-              <div className="flex h-full flex-col justify-between gap-16 pl-10 max-xl:pl-17 max-lg:relative max-lg:pl-0 max-md:gap-4">
+            <div className="flex w-5/12 flex-col max-xl:w-1/2 max-lg:mt-120 max-lg:w-full max-lg:rounded-2xl max-lg:bg-[radial-gradient(at_right_bottom,#1a3060,#111e36)] max-lg:px-8 max-lg:py-8 max-md:mt-0">
+              <div className="flex h-full flex-col justify-between gap-12 pl-10 max-xl:pl-12 max-lg:relative max-lg:pl-0 max-md:gap-4">
                 
-                <div className="max-lg:flex max-lg:gap-15 max-md:flex-col max-md:gap-3">
-                  <p className="heading-2 text-cream-dark mb-15 max-md:mb-4">
-                    {"Installment Plan"}
-                  </p>
+                <div className="space-y-6">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-widest text-[#b8892a] font-bold block mb-2">
+                      TRANSPARENT OWNERSHIP SCHEDULE
+                    </span>
+                    <p className="heading-2 text-white font-serif text-3xl sm:text-4xl">
+                      Plot Payment & Registry Plan
+                    </p>
+                    <p className="text-xs text-white/70 font-sans mt-2">
+                      Zero hidden charges. Clear freehold ownership with immediate registry and possession. Flexible EMI and customized installment plans available.
+                    </p>
+                  </div>
 
-                  <ul className="divide-cream-dark/40 divide-y">
+                  <ul className="divide-white/20 divide-y">
                     {stages.map((st, i) => (
-                      <li key={i} className="border-b-green mb-4 flex items-center justify-start gap-4 border-b pb-4 max-lg:justify-start max-md:mb-0 max-md:gap-8 max-md:py-2">
-                        <p className="heading-2 text-accent translate-y-0 whitespace-nowrap italic max-lg:not-italic font-serif">
+                      <li key={i} className="py-4 flex items-center justify-start gap-4">
+                        <p className="heading-2 text-[#b8892a] translate-y-0 whitespace-nowrap font-serif text-2xl sm:text-3xl font-semibold">
                           {st.percent}
                         </p>
-                        <p className="detail text-sand font-sans">
+                        <p className="detail text-white/90 font-sans text-xs sm:text-sm">
                           {st.label}
                         </p>
                       </li>
@@ -89,31 +92,15 @@ export default function InstallmentPlanSection({ lang, onOpenInquiry }) {
                   </ul>
                 </div>
 
-                {/* Building Permit Pill Button */}
+                {/* Direct Action Button */}
                 <div className="mt-auto pt-6">
                   <button 
                     type="button"
                     onClick={onOpenInquiry}
-                    className="inline-flex menu cursor-pointer border shrink-0 min-w-55 items-center justify-center gap-2 uppercase whitespace-nowrap outline-none bg-transparent border-green hover:bg-green/40 text-cream h-14 px-6 py-5 rounded-full max-md:h-12 max-md:py-3 w-full group relative overflow-hidden transition-all text-xs tracking-wider"
+                    className="w-full py-4 rounded-full bg-[#b8892a] text-[#111e36] hover:bg-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl"
                   >
-                    <span className="relative z-1 block w-full overflow-hidden">
-                      <span className="flex w-full items-center justify-center gap-4 transition-all duration-600 group-hover:-translate-y-full has-[>svg]:justify-between font-sans">
-                        {"Building Permit"}
-                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green">
-                          <path d="M19.5428 27.0002H18.1445V21.407H19.5428C20.5725 21.407 21.4072 22.2417 21.4072 23.2714V25.1358C21.4072 26.1655 20.5725 27.0002 19.5428 27.0002Z" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M24.2031 21.407V27.0002" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M24.2031 21.407H26.9997" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                      <span className="absolute top-full left-0 flex w-full items-center justify-center gap-4 transition-all duration-600 group-hover:top-0 has-[>svg]:justify-between font-sans">
-                        {"Building Permit"}
-                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green">
-                          <path d="M19.5428 27.0002H18.1445V21.407H19.5428C20.5725 21.407 21.4072 22.2417 21.4072 23.2714V25.1358C21.4072 26.1655 20.5725 27.0002 19.5428 27.0002Z" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M24.2031 21.407V27.0002" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M24.2031 21.407H26.9997" stroke="currentColor" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                    </span>
+                    <FileText className="w-4 h-4" />
+                    <span>Request Registry & Installment Details</span>
                   </button>
                 </div>
 
