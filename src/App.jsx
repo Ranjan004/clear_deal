@@ -27,7 +27,68 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+
   useEffect(() => {
+    // Dynamic Route-level SEO metadata
+    const seoMap = {
+      '/': {
+        title: 'ClearDeal Property — Aapki Sahi Deal | Freehold Residential Plots in Ghaziabad | Golden Luxury Homes',
+        desc: 'ClearDeal Property (Aapki Sahi Deal) — Trusted Real Estate Consultants in Delhi NCR & Ghaziabad. Explore Golden Luxury Homes: 155 freehold demarcated residential plots (58 - 195 sq. yd.) on Muradnagar Dasna Main Road near Delhi-Meerut Expressway. Immediate registry & mutation (dakhil kharij). Call +91 89799 53557.',
+      },
+      '/location': {
+        title: 'Location & Connectivity | Golden Luxury Homes — Near Delhi-Meerut Expressway Ghaziabad',
+        desc: 'Prime strategic location on Muradnagar Dasna Main Road, Kallu Garhi, Ghaziabad. Direct connectivity to Delhi-Meerut Expressway, Eastern Peripheral Expressway, and DPSG International School.',
+      },
+      '/amenities': {
+        title: 'Township Amenities & Features | Golden Luxury Homes by ClearDeal Property',
+        desc: 'Gated plotted township amenities: 25ft central boulevard, 22ft concrete interlocking paver roads, vertical garden green boundary, street electrification, concealed drainage, and 24/7 security.',
+      },
+      '/about': {
+        title: 'About ClearDeal Property | Trusted Land Planning & Real Estate Consultants NCR',
+        desc: 'Learn about ClearDeal Property (Aapki Sahi Deal), led by Er. Mohd Shakib and Abdul Hamid. Delivering transparent, clear-title plotted developments and land master layouts across Delhi NCR.',
+      },
+      '/contact': {
+        title: 'Contact Us | ClearDeal Property — Book Site Visit in Ghaziabad | +91 89799 53557',
+        desc: 'Contact ClearDeal Property for Golden Luxury Homes freehold plots. Schedule a free site visit or consultation. Phone: +91 89799 53557 / +91 97188 65748. Email: cleardeal.property@gmail.com.',
+      },
+      '/residences': {
+        title: 'Residential Plots Portfolio (58 to 195 Sq. Yd.) | Golden Luxury Homes Ghaziabad',
+        desc: 'Explore demarcated residential plot sizes from 58 sq. yd. to 195 sq. yd. ready for immediate registry and independent villa construction at Golden Luxury Homes.',
+      },
+      '/business-spaces': {
+        title: 'Commercial & Shop Plots | ClearDeal Property Ghaziabad',
+        desc: 'Prime main road commercial and retail shop plots along Muradnagar Dasna corridor. High footfall and exponential growth potential by ClearDeal Property.',
+      },
+      '/retail-spaces': {
+        title: 'Retail Spaces & Frontage Plots | Golden Luxury Homes ClearDeal Property',
+        desc: 'High-visibility commercial retail plots facing main arterial roads for shops, clinics, and convenience stores in Ghaziabad NCR.',
+      },
+      '/privacy-policy': {
+        title: 'Privacy Policy | ClearDeal Property',
+        desc: 'Privacy Policy for ClearDeal Property website visitors and clients regarding data protection, inquiries, and communications.',
+      },
+      '/terms': {
+        title: 'Terms & Conditions | ClearDeal Property',
+        desc: 'Terms and conditions governing the use of ClearDeal Property services, site visits, and plot bookings.',
+      },
+    };
+
+    const currentSeo = seoMap[pathname] || seoMap['/'];
+    document.title = currentSeo.title;
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', currentSeo.desc);
+    }
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      const canonicalUrl = pathname === '/' 
+        ? 'https://real-state-orcin.vercel.app/' 
+        : `https://real-state-orcin.vercel.app${pathname}`;
+      canonical.setAttribute('href', canonicalUrl);
+    }
+
     // Use Lenis if available, fallback to native
     if (window.lenis) {
       window.lenis.scrollTo(0, { immediate: true });
@@ -36,6 +97,7 @@ function ScrollToTop() {
     }
     setTimeout(() => ScrollTrigger.refresh(), 100);
   }, [pathname]);
+
   return null;
 }
 

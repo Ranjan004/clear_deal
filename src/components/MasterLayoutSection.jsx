@@ -99,7 +99,7 @@ export default function MasterLayoutSection({ onOpenInquiry }) {
             <div className="relative overflow-hidden rounded-2xl bg-[#0e1624] aspect-[3/4] max-h-[720px] flex items-center justify-center">
               <img
                 src="/media/golden_luxury_layout.png"
-                alt="Golden Luxury Homes Layout Map"
+                alt="Golden Luxury Homes 155 Freehold Residential Plots CAD Layout Map Muradnagar Dasna Road Ghaziabad"
                 className="w-full h-full object-contain cursor-zoom-in transition-transform duration-500 group-hover:scale-[1.02]"
                 onClick={() => setIsZoomOpen(true)}
               />
@@ -241,7 +241,7 @@ export default function MasterLayoutSection({ onOpenInquiry }) {
           <div className="flex-1 overflow-auto flex items-center justify-center p-2 sm:p-6">
             <img
               src="/media/golden_luxury_layout.png"
-              alt="High Res Master Layout"
+              alt="High Resolution 155 Plots Layout Model Golden Luxury Homes Muradnagar Ghaziabad ClearDeal Property"
               className="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl"
             />
           </div>

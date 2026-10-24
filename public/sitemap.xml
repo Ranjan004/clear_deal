@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage / Main Plotted Township -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://real-state-orcin.vercel.app/media/golden_luxury_gate.jpg</image:loc>
+      <image:title>Golden Luxury Homes Grand Entrance Arch Gate Ghaziabad</image:title>
+      <image:caption>155 Freehold Demarcated Residential Plots by ClearDeal Property</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://real-state-orcin.vercel.app/media/golden_luxury_layout.png</image:loc>
+      <image:title>Golden Luxury Homes 155 Plots Layout Plan</image:title>
+      <image:caption>Approved CAD plotting layout with 25ft and 22ft paver roads</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Location & Connectivity -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/location</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Contact & Site Visit Booking -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/contact</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Township Amenities & Infrastructure -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/amenities</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About ClearDeal Property -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/about</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Residential Plots Breakdown -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/residences</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Commercial & Shop Plots -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/business-spaces</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Retail Spaces -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/retail-spaces</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/privacy-policy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms & Conditions -->
+  <url>
+    <loc>https://real-state-orcin.vercel.app/terms</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

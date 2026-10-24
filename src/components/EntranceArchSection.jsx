@@ -40,7 +40,7 @@ export default function EntranceArchSection({ onOpenInquiry }) {
           <div className="lg:col-span-8 group relative rounded-3xl overflow-hidden border border-[#b8892a]/30 shadow-2xl bg-black">
             <img
               src="/media/golden_luxury_gate.jpg"
-              alt="Golden Luxury Home Grand Entrance Gate Arch"
+              alt="Golden Luxury Homes Grand Entrance Arch Gate on Muradnagar Dasna Main Road Ghaziabad by ClearDeal Property"
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             {/* Dark gradient overlay for bottom badge */}

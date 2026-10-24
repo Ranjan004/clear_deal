@@ -1,0 +1,9 @@
+# robots.txt for ClearDeal Property
+# Official Website: https://real-state-orcin.vercel.app/
+
+User-agent: *
+Allow: /
+
+# Host & Sitemaps
+Host: https://real-state-orcin.vercel.app
+Sitemap: https://real-state-orcin.vercel.app/sitemap.xml
